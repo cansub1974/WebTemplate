@@ -34,3 +34,75 @@
 .cart-thumbnail {
     max-height: 100px;
 }
+
+/* Owl Carousel */
+.owl-prev {
+    left: 15px;
+}
+
+.owl-next {
+    right: 15px;
+}
+
+.owl-prev,
+.owl-next {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.owl-prev:hover,
+owl-prev:active,
+owl-prev:focus,
+owl-next:hover,
+owl-next:active,
+owl-next:focus {
+    outline: 0;
+}
+
+.owl-prev i,
+.owl-next i {
+    font-size: 20px;
+    color: aliceblue;
+    text-shadow: 1px 1px 5px black;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+    background-color: transparent;
+}
+
+.item {
+    border: 0px solid #ddd;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.item img {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px
+}
+
+.item h5 {
+    margin: 7px 5px 0 5px;
+    font-size: 11pt;
+}
+
+.item p {
+    margin: 0 5px 5px 5px;
+    font-size: 10pt;
+}
+
+.card-header {
+    background-color: black;
+    color: white;
+}
+
+.btn-social {
+    width: 250px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}

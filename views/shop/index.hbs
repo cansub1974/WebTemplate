@@ -27,3 +27,30 @@
     {{/each}}
 </div>
 {{/each}}
+
+
+
+<div class="container mt-5 mb-5" style="width: 2000px;">
+    <div class="card" ">
+        <h2 class=" card-header">Magic Cards</h2>
+        <div class="card-body owl-carousel owl-theme">
+            {{# each products }}
+            {{# each this}}
+            <div class=" item">
+
+                <img src=" {{this.imagePath}}">
+                <h5>{{this.title}}</h5>
+                <p>{{this.description}}</p>
+                <div class="price float-left">${{ this.price }}</div>
+                <a href="/add-to-cart/{{this._id}}" class="btn btn-success btn-sm btn-block float-right"
+                    role="button">Add
+                    to
+                    Shopping
+                    Cart</a>
+
+            </div>
+            {{/each}}
+            {{/each}}
+        </div>
+    </div>
+</div>
