@@ -19,6 +19,7 @@ var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
 
+
 var app = express();
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -59,6 +60,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.session = req.session;
@@ -75,7 +77,7 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-// error handlers
+
 
 // development error handler
 // will print stacktrace
