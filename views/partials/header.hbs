@@ -8,18 +8,42 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class=" nav navbar-nav ml-auto">
             <li class="nav-item">
+                {{#if login}}
+                <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
+                    Shopping
+                    Cart <span class="badge badge-light">{{session.cart.totalQty}}</span>&nbsp; &nbsp; Hello
+                    {{user.firstName}}
+
+                </a>
+                {{else}}
                 <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
                     Shopping
                     Cart
                     <span class="badge badge-light">{{session.cart.totalQty}}</span>
                 </a>
+                {{/if}}
             </li>
+            {{#if login}}
+            <li>
+                <img src="{{ user.imagePath }}" class="profile-pic rounded-circle" alt="user image">
+            </li>
+            {{/if}}
 
             <li class="nav-item dropdown">
+                {{# if login }}
+
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    User Management
+                </a>
+                {{ else }}
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
                     User Management
                 </a>
+                {{/if}}
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {{# if login }}
                     <a class="dropdown-item" href="/user/profile">User Account</a>

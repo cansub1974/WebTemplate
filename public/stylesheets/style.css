@@ -106,3 +106,9 @@ owl-next:focus {
     margin-top: 1rem;
     margin-left: 1rem;
 }
+
+.profile-pic {
+    height: 30px;
+    width: auto;
+    margin: 5px;
+}

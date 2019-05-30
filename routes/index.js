@@ -4,6 +4,7 @@ var Cart = require('../models/cart');
 
 var Product = require('../models/product');
 var Order = require('../models/order');
+var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
