@@ -111,6 +111,7 @@ passport.use(
                     password: profile.id,
                     familyName: profile.name.familyName,
                     firstName: profile.name.givenName,
+                    imagePath: profile.photos[0].value
                 },
                 function (err, user) {
                     return cb(err, user);

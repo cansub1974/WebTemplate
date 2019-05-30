@@ -24,12 +24,13 @@ var userSchema = new Schema({
     state: {
       type: String,
       uppercase: true,
-      required: true,
+      //required: true,
       enum: statesArray
     },
     zip: Number,
   },
-  admin: Boolean
+  admin: Boolean,
+  imagePath: String
 });
 
 userSchema.plugin(findOrCreate);
