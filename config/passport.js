@@ -100,18 +100,17 @@ passport.use(
     new GoogleStrategy({
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            //callbackURL: 'http://localhost:3000/user/google/index',
-            callbackURL: 'https://webtemplatemckay.herokuapp.com/user/google/index',
+            callbackURL: 'http://localhost:3000/user/google/index',
+            //callbackURL: 'https://webtemplatemckay.herokuapp.com/user/google/index',
             userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
         },
         function (accessToken, refreshToken, profile, cb) {
-            //cb(null, extractProfile(profile));
             User.findOrCreate({
                     googleId: profile.id,
                     email: profile.emails[0].value,
                     password: profile.id,
                     familyName: profile.name.familyName,
-                    firstName: profile.name.givenName
+                    firstName: profile.name.givenName,
                 },
                 function (err, user) {
                     return cb(err, user);

@@ -3,6 +3,8 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 var findOrCreate = require('mongoose-findorcreate');
 
+var statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+
 var userSchema = new Schema({
   email: {
     type: String,
@@ -15,7 +17,19 @@ var userSchema = new Schema({
   googleId: String,
   facebookId: String,
   familyName: String,
-  firstName: String
+  firstName: String,
+  address: {
+    street: String,
+    city: String,
+    state: {
+      type: String,
+      uppercase: true,
+      required: true,
+      enum: statesArray
+    },
+    zip: Number,
+  },
+  admin: Boolean
 });
 
 userSchema.plugin(findOrCreate);
