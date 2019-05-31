@@ -16,7 +16,6 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 var methodOverride = require('method-override');
-var helpers = require('handlebars-helpers')();
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
@@ -81,48 +80,6 @@ app.use('/', routes);
 app.use('/user', userRoutes);
 app.use('/edit', editRoutes);
 
-var hbs = expressHbs.create({
-  // Specify helpers which are only registered on this instance.
-  helpers: {
-    foo: function () {
-      return 'FOO!';
-    },
-    bar: function () {
-      return 'BAR!';
-    }
-  }
-});
-
-// Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
-
-//   switch (operator) {
-//     case '==':
-//       return (v1 == v2) ? options.fn(this) : options.inverse(this);
-//     case '===':
-//       return (v1 === v2) ? options.fn(this) : options.inverse(this);
-//     case '!=':
-//       return (v1 != v2) ? options.fn(this) : options.inverse(this);
-//     case '!==':
-//       return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-//     case '<':
-//       return (v1 < v2) ? options.fn(this) : options.inverse(this);
-//     case '<=':
-//       return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-//     case '>':
-//       return (v1 > v2) ? options.fn(this) : options.inverse(this);
-//     case '>=':
-//       return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-//     case '&&':
-//       return (v1 && v2) ? options.fn(this) : options.inverse(this);
-//     case '||':
-//       return (v1 || v2) ? options.fn(this) : options.inverse(this);
-//     default:
-//       return options.inverse(this);
-//   }
-// });
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -130,10 +87,6 @@ app.use(function (req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
-
-
 
 // development error handler
 // will print stacktrace

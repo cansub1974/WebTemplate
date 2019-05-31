@@ -1,6 +1,6 @@
 <div class="row m-y-2">
     <!-- edit form column -->
-    <div class="col-lg-4 text-lg-center">
+    <div class="col-lg-4 text-lg-center m-4">
         <h2>Edit Profile</h2>
     </div>
     <div class="col-lg-8">
@@ -125,7 +125,7 @@
         </form>
     </div>
     <div class="col-lg-4 pull-lg-8 text-xs-center">
-        <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar" />
+        <img src="{{_user.imagePath}}" class="m-x-auto img-fluid rounded-circle" alt="avatar" />
         <h6 class="m-t-2">Upload a different photo</h6>
         <label class="custom-file">
             <input type="file" id="file" class="custom-file-input">

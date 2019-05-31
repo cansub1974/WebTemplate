@@ -6,23 +6,6 @@
     </div>
 </div>
 
-<!-- Calls `foo` helper, overridden at render-level. -->
-<p>foo{{foo}}</p>
-
-<!-- Calls `bar` helper, defined at instance-level. -->
-<p>{{bar}}</p>
-
-<a href="/authors" class="btn btn-success float-right" role="button">Authors
-</a>
-<h2 class="page-header">New Author</h2>
-<form action="/authors" method="POST">
-    {{>_form_fields}}
-    <div class="form-row form-row-end btn-row">
-        <a class="btn btn-danger" href="/authors">Cancel</a>
-        <button class="btn btn-primary" type="submit">Create</button>
-    </div>
-</form>
-
 {{# each products }}
 <div class="row">
     {{# each this }}
