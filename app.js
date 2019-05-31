@@ -15,9 +15,12 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
+var methodOverride = require('method-override');
+var helpers = require('handlebars-helpers')();
 
 var routes = require('./routes/index');
 var userRoutes = require('./routes/user');
+var editRoutes = require('./routes/edit');
 
 
 var app = express();
@@ -59,6 +62,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 //<-------------------This makes the isAuthenticated globally available------------------------------->//
 app.use(function (req, res, next) {
@@ -69,12 +73,56 @@ app.use(function (req, res, next) {
 
 //<-------------------This makes the user globally available------------------------------->//
 app.use(function (req, res, next) {
-  res.locals.user = req.user;
+  res.locals._user = req.user;
   next();
 });
 
-app.use('/user', userRoutes);
 app.use('/', routes);
+app.use('/user', userRoutes);
+app.use('/edit', editRoutes);
+
+var hbs = expressHbs.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+    foo: function () {
+      return 'FOO!';
+    },
+    bar: function () {
+      return 'BAR!';
+    }
+  }
+});
+
+// Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+
+//   switch (operator) {
+//     case '==':
+//       return (v1 == v2) ? options.fn(this) : options.inverse(this);
+//     case '===':
+//       return (v1 === v2) ? options.fn(this) : options.inverse(this);
+//     case '!=':
+//       return (v1 != v2) ? options.fn(this) : options.inverse(this);
+//     case '!==':
+//       return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+//     case '<':
+//       return (v1 < v2) ? options.fn(this) : options.inverse(this);
+//     case '<=':
+//       return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+//     case '>':
+//       return (v1 > v2) ? options.fn(this) : options.inverse(this);
+//     case '>=':
+//       return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+//     case '&&':
+//       return (v1 && v2) ? options.fn(this) : options.inverse(this);
+//     case '||':
+//       return (v1 || v2) ? options.fn(this) : options.inverse(this);
+//     default:
+//       return options.inverse(this);
+//   }
+// });
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -82,6 +130,8 @@ app.use(function (req, res, next) {
   err.status = 404;
   next(err);
 });
+
+
 
 
 

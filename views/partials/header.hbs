@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
                     Shopping
                     Cart <span class="badge badge-light">{{session.cart.totalQty}}</span>&nbsp; &nbsp; Hello
-                    {{user.firstName}}
+                    {{_user.firstName}}
 
                 </a>
                 {{else}}
@@ -23,11 +23,12 @@
                 </a>
                 {{/if}}
             </li>
-            {{#if login}}
+            <p>{{foo}}</p>
             <li>
-                <img src="{{ user.imagePath }}" class="profile-pic rounded-circle" alt="user image">
+                <img src="{{ _user.imagePath }}" class="profile-pic rounded-circle" alt="user image">
             </li>
-            {{/if}}
+
+
 
             <li class="nav-item dropdown">
                 {{# if login }}
@@ -46,7 +47,8 @@
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {{# if login }}
-                    <a class="dropdown-item" href="/user/profile">User Account</a>
+                    <a class="dropdown-item" href="/user/profile">Orders</a>
+                    <a class="dropdown-item" href="/edit/edit">Edit User Account</a>
                     <a class="dropdown-item" href="/user/logout">Logout</a>
                     {{ else }}
                     <a class="dropdown-item" href="/user/signup">Sign up</a>

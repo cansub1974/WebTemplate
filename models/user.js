@@ -27,7 +27,7 @@ var userSchema = new Schema({
       //required: true,
       enum: statesArray
     },
-    zip: Number,
+    zip: Number
   },
   admin: Boolean,
   imagePath: String

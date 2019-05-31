@@ -6,6 +6,8 @@ var Product = require('../models/product');
 var Order = require('../models/order');
 var User = require('../models/user');
 
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     var successMsg = req.flash('success')[0];
@@ -19,7 +21,12 @@ router.get('/', function (req, res, next) {
             title: 'Shopping Cart',
             products: productChunks,
             successMsg: successMsg,
-            noMessages: !successMsg
+            noMessages: !successMsg,
+            helpers: {
+                foo: function () {
+                    return 'foo.';
+                }
+            }
         });
     });
 });
@@ -68,6 +75,11 @@ router.get('/shopping-cart', function (req, res, next) {
         products: cart.generateArray(),
         totalPrice: cart.totalPrice
     });
+});
+
+router.get('/test', function (req, res, next) {
+
+    res.render('shop/test');
 });
 
 router.get('/checkout', isLoggedIn, function (req, res, next) {

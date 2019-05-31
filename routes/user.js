@@ -1,3 +1,5 @@
+//jshint esversion:8
+
 var express = require('express');
 var router = express.Router();
 var csrf = require('csurf');
@@ -13,6 +15,7 @@ router.use(csrfProtection);
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Order.find({
         user: req.user
+
     }, function (err, orders) {
         if (err) {
             return res.write('Error!');
@@ -23,6 +26,7 @@ router.get('/profile', isLoggedIn, function (req, res, next) {
             order.items = cart.generateArray();
         });
         res.render('user/profile', {
+            csrfToken: req.csrfToken(),
             orders: orders
         });
     });
