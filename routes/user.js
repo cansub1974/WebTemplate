@@ -96,7 +96,7 @@ router.get('/google/index',
     }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('user/profile');
+        res.redirect('/');
     });
 
 module.exports = router;
