@@ -1,3 +1,5 @@
+//jshint esversion:6
+
 var express = require('express');
 var router = express.Router();
 var Cart = require('../models/cart');
@@ -10,25 +12,20 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    var successMsg = req.flash('success')[0];
-    Product.find(function (err, docs) {
-        var productChunks = [];
-        var chunkSize = 3;
-        for (var i = 0; i < docs.length; i += chunkSize) {
-            productChunks.push(docs.slice(i, i + chunkSize));
-        }
-        res.render('shop/index', {
-            title: 'Shopping Cart',
-            products: productChunks,
-            successMsg: successMsg,
-            noMessages: !successMsg,
-            helpers: {
-                foo: function () {
-                    return 'foo.';
-                }
+
+    Product.find({},
+        function (err, foundProducts) {
+
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('../views/shop/index', {
+                    products: foundProducts,
+                    user: User
+                });
             }
-        });
-    });
+        }
+    );
 });
 
 router.get('/add-to-cart/:id', function (req, res, next) {
