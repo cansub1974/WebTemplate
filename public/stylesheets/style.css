@@ -112,3 +112,7 @@ owl-next:focus {
     width: auto;
     margin: 5px;
 }
+
+.lh-condensed {
+    line-height: 1.25;
+}

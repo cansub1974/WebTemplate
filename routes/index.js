@@ -87,6 +87,7 @@ router.get('/checkout', isLoggedIn, function (req, res, next) {
     var errMsg = req.flash('error')[0];
     res.render('shop/checkout', {
         total: cart.totalPrice,
+        products: cart.generateArray(),
         errMsg: errMsg,
         noError: !errMsg
     });
