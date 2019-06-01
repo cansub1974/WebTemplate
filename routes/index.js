@@ -12,7 +12,7 @@ var User = require('../models/user');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-
+    var successMsg = req.flash('success')[0];
     Product.find({},
         function (err, foundProducts) {
 
@@ -21,7 +21,9 @@ router.get('/', function (req, res, next) {
             } else {
                 res.render('../views/shop/index', {
                     products: foundProducts,
-                    user: User
+                    user: User,
+                    successMsg: successMsg,
+                    noMessages: !successMsg
                 });
             }
         }
@@ -116,13 +118,18 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
         var order = new Order({
             user: req.user,
             cart: cart,
-            address: req.body.address,
-            name: req.body.name,
+            street: req.body.street,
+            street2: req.body.street2,
+            city: req.body.city,
+            country: req.body.country,
+            zip: req.body.zip,
+            firstName: req.body.firstName,
+            familyName: req.body.familyName,
             paymentId: charge.id
         });
         order.save(function (err, result) {
             req.flash('success', 'Successfully bought product!');
-            req.session.cart = null;
+            req.session.cart = 0;
             res.redirect('/');
         });
     });

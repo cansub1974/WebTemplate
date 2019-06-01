@@ -8,7 +8,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
+//const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(validator());
-app.use(cookieParser());
+//app.use(cookieParser());
 app.use(session({
   secret: 'process.env.SESSION_SECRET',
   resave: false,
@@ -76,9 +76,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', routes);
 app.use('/user', userRoutes);
 app.use('/edit', editRoutes);
+app.use('/', routes);
+
 
 
 // catch 404 and forward to error handler
