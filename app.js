@@ -1,44 +1,48 @@
+//jshint esversion:6
+
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var expressHbs = require('express-handlebars');
-var mongoose = require('mongoose');
-var session = require('express-session');
-var passport = require('passport');
-var flash = require('connect-flash');
-var validator = require('express-validator');
-var MongoStore = require('connect-mongo')(session);
-var methodOverride = require('method-override');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
+const ejs = require('ejs');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('connect-flash');
+const validator = require('express-validator');
+const MongoStore = require('connect-mongo')(session);
+const methodOverride = require('method-override');
 
-var routes = require('./routes/index');
-var userRoutes = require('./routes/user');
-var editRoutes = require('./routes/edit');
+const routes = require('./routes/index');
+const userRoutes = require('./routes/user');
+const editRoutes = require('./routes/edit');
 
 
-var app = express();
+const app = express();
 
+//<--------------------MongoDb------------------------>//
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true
 });
 mongoose.set('useCreateIndex', true);
+const db = mongoose.connection;
+db.on('error', error => console.error(error));
+db.once('open', () => console.log('Connected to Mongoose'));
+
 require('./config/passport');
 
-// view engine setup
-app.engine('.hbs', expressHbs({
-  defaultLayout: 'layout',
-  extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.set('layout', 'layouts/layout');
+app.use(expressLayouts);
+app.use(express.static('public'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -57,21 +61,17 @@ app.use(session({
     maxAge: 180 * 60 * 1000
   }
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
-//<-------------------This makes the isAuthenticated globally available------------------------------->//
+//<-------------------Global Variables------------------------------->//
 app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.session = req.session;
-  next();
-});
-
-//<-------------------This makes the user globally available------------------------------->//
-app.use(function (req, res, next) {
   res.locals._user = req.user;
   next();
 });
@@ -83,7 +83,7 @@ app.use('/edit', editRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
