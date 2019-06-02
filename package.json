@@ -20,7 +20,7 @@
     "ejs": "^2.6.1",
     "express": "^4.17.0",
     "express-ejs-layouts": "^2.5.0",
-    "express-session": "^1.16.1",
+    "express-session": "^1.13.0",
     "express-validator": "^5.3.1",
     "handlebars-helpers": "^0.10.0",
     "hbs": "~3.1.0",

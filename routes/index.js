@@ -129,7 +129,7 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
         });
         order.save(function (err, result) {
             req.flash('success', 'Successfully bought product!');
-            req.session.cart = 0;
+            req.session.cart = null;
             res.redirect('/');
         });
     });
