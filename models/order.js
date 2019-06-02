@@ -8,42 +8,46 @@ var schema = new Schema({
     },
     cart: {
         type: Object,
-        required: true
+        //required: true
     },
     street: {
         type: String,
-        required: true
+        //required: true
     },
     street2: {
         type: String
     },
     city: {
         type: String,
-        required: true
+        //required: true
     },
     state: {
         type: String,
-        required: true
+        //required: true
     },
     zip: {
         type: String,
-        required: true
+        //required: true
     },
-    address: {
+    country: {
         type: String,
-        required: true
+        //required: true
+    },
+    email: {
+        type: String,
+        //required: true
     },
     firstName: {
         type: String,
-        required: true
+        //required: true
     },
     familyName: {
         type: String,
-        required: true
+        //required: true
     },
     paymentId: {
         type: String,
-        required: true
+        //required: true
     }
 });
 
