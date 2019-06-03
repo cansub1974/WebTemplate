@@ -35,6 +35,12 @@
     max-height: 100px;
 }
 
+.order-thumbnail {
+    height: 75px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
 /* Owl Carousel */
 .owl-prev {
     left: 15px;
@@ -115,4 +121,12 @@ owl-next:focus {
 
 .lh-condensed {
     line-height: 1.25;
+}
+
+.order-card {
+    margin-bottom: 10px;
+}
+
+.order-card-body {
+    padding-top: 0;
 }

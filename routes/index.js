@@ -8,30 +8,11 @@ var Product = require('../models/product');
 var Order = require('../models/order');
 var User = require('../models/user');
 
-
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    var successMsg = req.flash('success')[0];
-<<<<<<< HEAD
-    Product.find(function (err, docs) {
-            var productChunks = [];
-            var chunkSize = 3;
-            for (var i = 0; i < docs.length; i += chunkSize) {
-                productChunks.push(docs.slice(i, i + chunkSize));
-            }
-            res.render('shop/index', {
-                    title: 'Shopping Cart',
-                    products: productChunks,
-                    successMsg: successMsg,
-                    noMessages: !successMsg,
-                }
-            });
-    });
-=======
     Product.find({},
         function (err, foundProducts) {
-
+            var successMsg = req.flash('success')[0];
             if (err) {
                 console.log(err);
             } else {
@@ -44,7 +25,6 @@ router.get('/', function (req, res, next) {
             }
         }
     );
->>>>>>> 41f7488ce2be937bbb95011caf9b8bc8a735f981
 });
 
 router.get('/add-to-cart/:id', function (req, res, next) {

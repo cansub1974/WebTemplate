@@ -1,18 +1,37 @@
-<% for(let i=0; i<orders.length; i++){ %>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <ul class="list-group">
-        <% for(let j=0; j<orders[i].length; j++){ %>
-        <li class="list-group-item">
-                <span class="badge"><%= order[j].price %></span>
-                <%= order[j].item.title %> | <%= order[j].qty %> Units
-        </li>
-        <% } %>
-        </ul>
-    </div>
-    <div class="panel-footer">
-        <strong>Total Price: $<%= order.cart.totalPrice %></strong>
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h1>My Orders</h1>
+        <hr>
+        <% orders.forEach(function(order) { %>
+            <div class="card">
+                <h5 class="card-header">Order#</h5>
+                <div class="card-body">
+                <% order.items.forEach(function(items) { %>
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src=" <%= items.item.imagePath%>" class="order-thumbnail" alt="">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="card-title mt-3"><%= items.item.title %></h5>
+                        </div>
+                        <div class="col-md-4">
+
+                            <h5 class="card-title mt-3"><%= items.qty %> Each @ &nbsp;&nbsp; $<%= items.item.price %></span></h5>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                <% }); %>
+                 <h5 class="card-footer"><strong>Invoice Total: $<%= order.cart.totalPrice %></strong></h5>
+                </div>
+             </div>   
+        <% }); %>          
     </div>
 </div>
-<% } %>
+
+
+
 
