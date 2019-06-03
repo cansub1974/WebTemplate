@@ -96,12 +96,25 @@ passport.use('local.signin', new LocalStrategy({
 }));
 
 //-----------------------GOOGLE STRATEGY--------------------------//
+
+var callbackUrlVar;
+
+if (process.env.NODE_ENV !== 'production') {
+    callbackUrlVar = 'http://localhost:3000/user/google/index';
+} else {
+    callbackUrlVar = 'https://shoppingtemplatemckay.herokuapp.com/user/google/index';
+}
+
 passport.use(
+
+
+
     new GoogleStrategy({
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            callbackURL: 'http://localhost:3000/user/google/index',
+            //callbackURL: 'http://localhost:3000/user/google/index',
             //callbackURL: 'https://webtemplatemckay.herokuapp.com/user/google/index',
+            callbackURL: callbackUrlVar,
             userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
         },
         function (accessToken, refreshToken, profile, cb) {

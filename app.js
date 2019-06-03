@@ -51,7 +51,7 @@ app.use(bodyParser.urlencoded({
 app.use(validator());
 app.use(cookieParser());
 app.use(session({
-  secret: '7058485288McKay',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: new MongoStore({
