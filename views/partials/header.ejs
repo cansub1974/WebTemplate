@@ -11,8 +11,10 @@
                 <% if (login){ %>
                 <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
                     Shopping
-                    Cart <span class="badge badge-light"><%= session.cart.totalQty %></span>&nbsp; &nbsp; Hello
-                    <%=_user.firstName %>
+                    <%   if (session.cart && session.cart.totalQty) { %>
+                    </i> Cart <span class="badge badge-light"><%=  session.cart.totalQty  %></span>&nbsp; &nbsp; Hello
+                    <%=_user.firstName %></a>
+                    <% } %>
 
                 </a>
                 <li>
@@ -21,8 +23,9 @@
                 <%} else {%>
                 <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
                     Shopping
-                    Cart
-                    <span class="badge badge-light"><%= session.cart.totalQty %></span>
+                    <%   if (session.cart && session.cart.totalQty) { %>
+                    </i> Cart <span class="badge badge-light"><%=  session.cart.totalQty  %></span></a>
+                    <% } %>
                 </a>
                 <% } %>
             </li>
