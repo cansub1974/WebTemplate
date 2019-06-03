@@ -9,40 +9,40 @@
         </div>
     </div>
     <div class="col-lg-8 push-lg-4 personal-info">
-        <form action="/edit/{{_user.id}}?_method=PUT" method="POST">
+        <form action="/edit/<%=_user.id%>?_method=PUT" method="POST">
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">First name</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" name="firstName" value="{{_user.firstName}}" />
+                    <input class="form-control" type="text" name="firstName" value="<%=_user.firstName%>" />
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" name="familyName" value="{{_user.familyName}}" />
+                    <input class="form-control" type="text" name="familyName" value="<%=_user.familyName%>" />
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Email</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="email" name="email" value="{{_user.email}}" />
+                    <input class="form-control" type="email" name="email" value="<%=_user.email%>" />
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Address</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" name="street" value="{{_user.address.street}}" />
+                    <input class="form-control" type="text" name="street" value="<%=_user.address.street%>" />
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label"></label>
                 <div class="col-lg-6">
-                    <input class="form-control" type="text" name="city" value="{{_user.address.city}}"
+                    <input class="form-control" type="text" name="city" value="<%=_user.address.city%>"
                         placeholder="City" />
                 </div>
                 <div class="col-lg-3">
-                    <select id="user_state" class="form-control" size="0" name="state" value="{{_user.address.state}}">
-                        <option value="{{_user.address.state}}" selected="selected">{{_user.address.state}}</option>
+                    <select id="user_state" class="form-control" size="0" name="state" value="<%=_user.address.state%>">
+                        <option value="{{_user.address.state}}" selected="selected"><%=_user.address.state%></option>
                         <option value=" AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -100,7 +100,7 @@
             <div class="form-group row">
                 <label class="col-lg-3 col-form-label form-control-label">Zip</label>
                 <div class="col-lg-9">
-                    <input class="form-control" type="text" name="zip" value="{{_user.address.zip}}" />
+                    <input class="form-control" type="text" name="zip" value="<%=_user.address.zip%>" />
                 </div>
             </div>
             <div class="form-group row">
@@ -125,7 +125,7 @@
         </form>
     </div>
     <div class="col-lg-4 pull-lg-8 text-xs-center">
-        <img src="{{_user.imagePath}}" class="m-x-auto img-fluid rounded-circle" alt="avatar" />
+        <img src="<%=_user.imagePath%>" class="m-x-auto img-fluid rounded-circle" alt="avatar" />
         <h6 class="m-t-2">Upload a different photo</h6>
         <label class="custom-file">
             <input type="file" id="file" class="custom-file-input">

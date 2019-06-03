@@ -1,3 +1,5 @@
+//jshint esversion:6
+
 var express = require('express');
 var router = express.Router();
 var Cart = require('../models/cart');
@@ -11,24 +13,21 @@ var User = require('../models/user');
 /* GET home page. */
 router.get('/', function (req, res, next) {
     var successMsg = req.flash('success')[0];
-    Product.find(function (err, docs) {
-        var productChunks = [];
-        var chunkSize = 3;
-        for (var i = 0; i < docs.length; i += chunkSize) {
-            productChunks.push(docs.slice(i, i + chunkSize));
-        }
-        res.render('shop/index', {
-            title: 'Shopping Cart',
-            products: productChunks,
-            successMsg: successMsg,
-            noMessages: !successMsg,
-            helpers: {
-                foo: function () {
-                    return 'foo.';
-                }
+    Product.find({},
+        function (err, foundProducts) {
+
+            if (err) {
+                console.log(err);
+            } else {
+                res.render('../views/shop/index', {
+                    products: foundProducts,
+                    user: User,
+                    successMsg: successMsg,
+                    noMessages: !successMsg
+                });
             }
-        });
-    });
+        }
+    );
 });
 
 router.get('/add-to-cart/:id', function (req, res, next) {
@@ -90,6 +89,7 @@ router.get('/checkout', isLoggedIn, function (req, res, next) {
     var errMsg = req.flash('error')[0];
     res.render('shop/checkout', {
         total: cart.totalPrice,
+        products: cart.generateArray(),
         errMsg: errMsg,
         noError: !errMsg
     });
@@ -118,8 +118,14 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
         var order = new Order({
             user: req.user,
             cart: cart,
-            address: req.body.address,
-            name: req.body.name,
+            street: req.body.street,
+            street2: req.body.street2,
+            city: req.body.city,
+            state: req.body.state,
+            country: req.body.country,
+            zip: req.body.zip,
+            firstName: req.body.firstName,
+            familyName: req.body.familyName,
             paymentId: charge.id
         });
         order.save(function (err, result) {

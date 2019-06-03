@@ -1,0 +1,18 @@
+<% for(let i=0; i<orders.length; i++){ %>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <ul class="list-group">
+        <% for(let j=0; j<orders[i].length; j++){ %>
+        <li class="list-group-item">
+                <span class="badge"><%= order[j].price %></span>
+                <%= order[j].item.title %> | <%= order[j].qty %> Units
+        </li>
+        <% } %>
+        </ul>
+    </div>
+    <div class="panel-footer">
+        <strong>Total Price: $<%= order.cart.totalPrice %></strong>
+    </div>
+</div>
+<% } %>
+
