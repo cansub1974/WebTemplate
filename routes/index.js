@@ -121,6 +121,7 @@ router.post('/checkout', isLoggedIn, function (req, res, next) {
             street: req.body.street,
             street2: req.body.street2,
             city: req.body.city,
+            state: req.body.state,
             country: req.body.country,
             zip: req.body.zip,
             firstName: req.body.firstName,
