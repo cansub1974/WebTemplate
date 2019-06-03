@@ -100,8 +100,8 @@ passport.use(
     new GoogleStrategy({
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
-            //callbackURL: 'http://localhost:3000/user/google/index',
-            callbackURL: 'https://webtemplatemckay.herokuapp.com/user/google/index',
+            callbackURL: 'http://localhost:3000/user/google/index',
+            //callbackURL: 'https://webtemplatemckay.herokuapp.com/user/google/index',
             userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
         },
         function (accessToken, refreshToken, profile, cb) {

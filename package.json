@@ -17,9 +17,15 @@
     "cookie-parser": "^1.4.4",
     "csurf": "^1.10.0",
     "debug": "^4.1.1",
+    "ejs": "^2.6.1",
     "express": "^4.17.0",
+<<<<<<< HEAD
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.1",
+=======
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.13.0",
+>>>>>>> 41f7488ce2be937bbb95011caf9b8bc8a735f981
     "express-validator": "^5.3.1",
     "handlebars-helpers": "^0.10.0",
     "hbs": "~3.1.0",

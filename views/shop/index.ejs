@@ -1,0 +1,19 @@
+<div class="row">
+    <% for(let i =0; i<products.length; i++){ %>
+    <div class=" col-sm-6 col-md-4">
+        <div class="card shadow" style="width: 20rem;">
+            <img src="<%=products[i].imagePath%>" class="card-img-top mx-auto d-block img-responsive" alt="...">
+            <div class="card-body">
+                <h4 class="card-title"><%=products[i].title%></h4>
+                <p class="card-text"><%=products[i].description%></p>
+                <div>
+                    <div class="price float-left">$<%=products[i].price%></div>
+                    <a href="/add-to-cart/<%=products[i]._id%>" class="btn btn-success float-right" role="button">Add
+                        to
+                        Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</div>
