@@ -18,14 +18,19 @@ var schema = new Schema({
         type: Number,
         required: true
     },
-    Quantity: {
+    quantity: {
         type: Number,
-        required: true
+        //required: true
     },
     productNumber: {
         type: Number,
+        //required: true
+    },
+    category: {
+        type: String,
         required: true
     }
+
 });
 
 module.exports = mongoose.model('Product', schema);
