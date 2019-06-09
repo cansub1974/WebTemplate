@@ -58,6 +58,7 @@ router.post('/', async (req, res) => {
   try {
     const newProduct = await product.save();
     res.redirect(`products/${newProduct.id}`);
+    //res.redirect('../routes/index');
 
   } catch {
     renderNewPage(res, product, true);
@@ -68,12 +69,12 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
-      .exec()
+      .exec();
     res.render('products/show', {
       product: product
-    })
+    });
   } catch {
-    res.redirect('/')
+    res.redirect('/');
   }
 });
 
@@ -167,4 +168,4 @@ function saveImage(product, imageEncoded) {
   }
 }
 
-module.exports = router
+module.exports = router;

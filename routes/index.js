@@ -78,11 +78,14 @@ router.get('/shopping-cart', function (req, res, next) {
             products: null
         });
     }
+
     var cart = new Cart(req.session.cart);
+
     res.render('shop/shopping-cart', {
         products: cart.generateArray(),
+        productImagePaths: cart.generateImageArray(),
         totalPrice: cart.totalPrice,
-        productImagePath: cart.productImagePath
+        //productImagePath: productImagePaths.productImagePaths
     });
 });
 

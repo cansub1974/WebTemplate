@@ -47,6 +47,7 @@ app.use(expressLayouts);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
+  limit: '10mb',
   extended: false
 }));
 app.use(validator());
