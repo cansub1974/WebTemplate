@@ -27,17 +27,17 @@ router.get('/', function (req, res, next) {
     );
 });
 
-router.get('/products', async (req, res) => {
-    let products;
-    try {
-        products = await Product.find().limit(10).exec();
-    } catch {
-        products = [];
-    }
-    res.render('../views/products/index', {
-        products: products
-    });
-});
+// router.get('/products', async (req, res) => {
+//     let products;
+//     try {
+//         products = await Product.find().limit(10).exec();
+//     } catch {
+//         products = [];
+//     }
+//     res.render('../views/products/index', {
+//         products: products
+//     });
+// });
 
 router.get('/add-to-cart/:id', function (req, res, next) {
     var productId = req.params.id;

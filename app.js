@@ -20,10 +20,11 @@ const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const methodOverride = require('method-override');
 
-const routes = require('./routes/index');
-const userRoutes = require('./routes/user');
-const editRoutes = require('./routes/edit');
-const productRoutes = require('./routes/products');
+const indexRouter = require('./routes/index');
+const userRouter = require('./routes/user');
+const editRouter = require('./routes/edit');
+const productRouter = require('./routes/products');
+const authorRouter = require('./routes/authors');
 
 
 const app = express();
@@ -78,13 +79,11 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use('/', routes);
-app.use('/user', userRoutes);
-app.use('/edit', editRoutes);
-app.use('/products', productRoutes);
-
-
-
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+app.use('/edit', editRouter);
+app.use('/products', productRouter);
+app.use('/', authorRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
