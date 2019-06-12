@@ -6,6 +6,10 @@
     color: #7f7f7f;
 }
 
+.btn-edit {
+    margin-left: 15px;
+}
+
 .price {
     font-weight: bold;
     font-size: 1.5rem;
@@ -14,6 +18,21 @@
 .card {
     margin: 10%;
     border-radius: 10px;
+
+    margin-top: 10px;
+}
+
+.card-edit {
+    margin: 10%;
+    border-radius: 10px;
+    height: 400px;
+    width: auto;
+    margin-top: 10px;
+}
+
+.card-med {
+    max-height: 325px;
+    width: auto;
 }
 
 .card img {

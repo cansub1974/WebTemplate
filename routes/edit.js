@@ -12,7 +12,7 @@ router.get('/edit', function (req, res, next) {
 router.put('/:id', async (req, res) => {
     let user;
     try {
-        user = await Author.findById(req.params.id);
+        user = await User.findById(req.params.id);
         user.firstName = req.body.firstName;
         user.familyName = req.body.familyName;
         user.email = req.body.email;
@@ -28,7 +28,7 @@ router.put('/:id', async (req, res) => {
             res.redirect('/');
         } else {
             res.render('edit/edit', {
-                author: author,
+                user: user,
                 errorMessage: 'Error updating User'
             });
         }

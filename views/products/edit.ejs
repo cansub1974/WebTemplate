@@ -1,0 +1,8 @@
+<h2 class="page-header">Edit Products</h2>
+<form action="/products/update/<%= product.id %>?_method=PUT" method="POST">
+  <%- include('../partials/edit_product_form_fields') %>
+  <div class="form-row form-row-end btn-row">
+    <a class="btn btn-danger btn-edit" href="/products/edit">Cancel</a>
+    <button class="btn btn-primary btn-edit" type="submit">Update</button>
+  </div>
+</form>

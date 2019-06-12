@@ -3,7 +3,7 @@
 <div class="product-grid <%= productGridClass %>">
   <% products.forEach(product => { %>
     <a href="/products/<%= product.id %>">
-      <img class="productcover <%= productCoverClass %>" src="<%= product.productImagePath %>">
+      <img class="productcover <%= productCoverClass %> img-thumbnail card-med" src="<%= product.productImagePath %>">
     </a>
   <% }) %>
 </div>
