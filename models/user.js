@@ -23,9 +23,9 @@ var userSchema = new Schema({
     city: String,
     state: {
       type: String,
-      uppercase: true,
+      //uppercase: true,
       //required: true,
-      enum: statesArray
+      //enum: statesArray
     },
     zip: Number
   },

@@ -2,10 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
-const Author = require('../models/user');
+const User = require('../models/user');
 
 router.get('/edit', function (req, res, next) {
-
     res.render('edit/edit');
 });
 
@@ -22,7 +21,7 @@ router.put('/:id', async (req, res) => {
         user.address.zip = req.body.zip;
 
         await user.save();
-        res.redirect(`/edit/edit`);
+        res.redirect('/edit/edit');
     } catch {
         if (user == null) {
             res.redirect('/');
@@ -34,8 +33,5 @@ router.put('/:id', async (req, res) => {
         }
     }
 });
-
-
-
 
 module.exports = router;
