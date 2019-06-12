@@ -49,10 +49,21 @@
 
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%if(login){%>
+                    <%if(login && _user.admin === true){%>
                     <a class="dropdown-item" href="/user/profile">Orders</a>
+                    <a class="dropdown-item" href="/products/search">Search Products</a>
+                    <a class="dropdown-item" href="/products/new">Add New Products</a>
                     <a class="dropdown-item" href="/edit/edit">Edit User Account</a>
                     <a class="dropdown-item" href="/user/logout">Logout</a>
+
+                    <%} else if (login){%>
+
+
+                    <a class="dropdown-item" href="/user/profile">Orders</a>
+                    <a class="dropdown-item" href="/edit/edit">Edit User Account</a>                   
+                    <a class="dropdown-item" href="/user/logout">Logout</a>
+                    
+
                     <%} else {%>
                     <a class="dropdown-item" href="/user/signup">Sign up</a>
                     <a class="dropdown-item" href="/user/signin">Sign in</a>

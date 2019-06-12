@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col">
+
+        <div class="form-column">
+            <div class="form-group">
+                <label for="title">Product Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%=product.title%>">
+            </div>
+            <div class="form-group md-form md-outline">
+                <label for="description">Description</label>
+                <textarea id="description" class="md-textarea form-control" rows="3" name="description"><%=product.description%></textarea>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" value="<%=product.price%>">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="title">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" value="<%=product.quantity%>">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="productNumber">Product Number</label>
+                    <input type="text" class="form-control" id="productNumber" name="productNumber" value="<%=product.productNumber%>">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="title">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" value="<%=product.category%>">
+                </div>
+            </div>
+        </div>
+        <div class="form-item form-item-no-grow">
+          <label>Product Image</label>
+          <input type="file" name="productImage" class="product-cover filepond">
+        </div>
+    </div>
+
+    <div class="col">
+        <img src="<%=product.productImagePath%>" class="card-edit float-left" alt="...">
+    </div>
+</div>
+
+
+ 
+
+
+
+
+
+
+

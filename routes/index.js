@@ -1,4 +1,4 @@
-//jshint esversion:6
+//jshint esversion:8
 
 var express = require('express');
 var router = express.Router();
@@ -27,6 +27,18 @@ router.get('/', function (req, res, next) {
     );
 });
 
+// router.get('/products', async (req, res) => {
+//     let products;
+//     try {
+//         products = await Product.find().limit(10).exec();
+//     } catch {
+//         products = [];
+//     }
+//     res.render('../views/products/index', {
+//         products: products
+//     });
+// });
+
 router.get('/add-to-cart/:id', function (req, res, next) {
     var productId = req.params.id;
     var cart = new Cart(req.session.cart ? req.session.cart : {});
@@ -37,7 +49,7 @@ router.get('/add-to-cart/:id', function (req, res, next) {
         }
         cart.add(product, product.id);
         req.session.cart = cart;
-        console.log(req.session.cart);
+        //console.log(req.session.cart);
         res.redirect('/');
     });
 });
@@ -66,16 +78,15 @@ router.get('/shopping-cart', function (req, res, next) {
             products: null
         });
     }
+
     var cart = new Cart(req.session.cart);
+
     res.render('shop/shopping-cart', {
         products: cart.generateArray(),
-        totalPrice: cart.totalPrice
+        productImagePaths: cart.generateImageArray(),
+        totalPrice: cart.totalPrice,
+        //productImagePath: productImagePaths.productImagePaths
     });
-});
-
-router.get('/test', function (req, res, next) {
-
-    res.render('shop/test');
 });
 
 router.get('/checkout', isLoggedIn, function (req, res, next) {

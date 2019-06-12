@@ -12,6 +12,8 @@ var User = require('../models/user');
 var csrfProtection = csrf();
 router.use(csrfProtection);
 
+
+
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Order.find({
         user: req.user

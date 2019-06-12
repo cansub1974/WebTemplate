@@ -20,9 +20,11 @@ const validator = require('express-validator');
 const MongoStore = require('connect-mongo')(session);
 const methodOverride = require('method-override');
 
-const routes = require('./routes/index');
-const userRoutes = require('./routes/user');
-const editRoutes = require('./routes/edit');
+const indexRouter = require('./routes/index');
+const userRouter = require('./routes/user');
+const editRouter = require('./routes/edit');
+const productRouter = require('./routes/products');
+const authorRouter = require('./routes/authors');
 
 
 const app = express();
@@ -46,6 +48,7 @@ app.use(expressLayouts);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
+  limit: '10mb',
   extended: false
 }));
 app.use(validator());
@@ -73,14 +76,15 @@ app.use(function (req, res, next) {
   res.locals.login = req.isAuthenticated();
   res.locals.session = req.session;
   res.locals._user = req.user;
+  //res.locals.admin = req.isAdmin();
   next();
 });
 
-app.use('/user', userRoutes);
-app.use('/edit', editRoutes);
-app.use('/', routes);
-
-
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+app.use('/edit', editRouter);
+app.use('/products', productRouter);
+app.use('/', authorRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

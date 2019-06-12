@@ -13,7 +13,9 @@
         <ul class="list-group mb-3">
         <% products.forEach(function(product) { %>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <img src=" <%= product.item.imagePath%>" class="cart-thumbnail" alt="">
+            <% var imageBuffer = Buffer.from(product.item.productImage).toString('base64'); %>
+            <% var productImagePath = "data:" + product.item.productImageType + ";charset=utf-8;base64," + imageBuffer; %>
+            <img src="<%= productImagePath %>" class="cart-thumbnail">
             <div >
             <h6 class="my-0"><%= product.item.title %></h6>
             <small class="text-muted"><%= product.item.description %></small>

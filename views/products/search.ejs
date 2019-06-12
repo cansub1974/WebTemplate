@@ -1,0 +1,24 @@
+<h2 class="page-header">Search Products</h2>
+<form action="/products/search" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Title</label>
+      <input type="text" name="title" value="">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label>Published After</label>
+      <input type="date" name="publishedAfter" value="">
+    </div>
+    <div class="form-item">
+      <label>Published Before</label>
+      <input type="date" name="publishedBefore" value="">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+<%- include('../partials/productGrid', { products: products, large: true }) %>

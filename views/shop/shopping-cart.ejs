@@ -2,12 +2,18 @@
 <% if (products) { %>
 <div class="row" style="font-size: 1.5rem;">
     <div class="col-sm-6 col-md-8 col-md-offset-3 col-sm-offset-3 style=" margin: 10px;">
+                
+
         <ul class="list-group">
             <% products.forEach(function(product) { %>
+
             <li class="list-group-item shadow" style="margin: 10px;>                           
                 
                 <span class=" badge"></span>
-                <img src=" <%= product.item.imagePath%>" class="cart-thumbnail" alt="">
+                <% var imageBuffer = Buffer.from(product.item.productImage).toString('base64'); %>
+                <% var productImagePath = "data:" + product.item.productImageType + ";charset=utf-8;base64," + imageBuffer; %>
+                <img src="<%= productImagePath %>" class="cart-thumbnail">
+               
                 <span class=" badge badge-dark"><%= product.qty %></span>
                 <strong> x </strong>
                 <strong><%= product.item.title %></strong>
@@ -21,6 +27,7 @@
                     </ul>
                 </div>
             </li>
+
             <% }); %>
         </ul>
     </div>
