@@ -1,3 +1,9 @@
+/*--------------- HEADER -----------------*/
+.navbar-search {
+    width: 500px;
+}
+
+
 .thumbnail img {
     max-height: 150px;
 }

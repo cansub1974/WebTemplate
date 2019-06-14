@@ -4,11 +4,18 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline" action="/products/search" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Products" name="title" aria-label="Search">
+            <button class="btn btn-light my-sm-0" type="submit">Search</button>
+        </form>
         <ul class=" nav navbar-nav ml-auto">
+            
             <li class="nav-item">
-                <% if (login){ %>
+           
+               <% if (login){ %>
                 <a class="nav-link" href="/shopping-cart"><i class="fas fa-shopping-cart"></i>
                     Shopping
                     <%   if (session.cart && session.cart.totalQty) { %>
