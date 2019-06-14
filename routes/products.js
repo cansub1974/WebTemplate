@@ -29,6 +29,32 @@ router.get('/search', async (req, res) => {
   }
 });
 
+// UserSearch Products Route
+router.get('/userSearch', async (req, res) => {
+  let query = Product.find();
+  let searchOptions = {};
+  if (req.query.title != null && req.query.title != '') {
+    query = query.regex('title', new RegExp(req.query.title, 'i'));
+  }
+  if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
+    query = query.lte('publishDate', req.query.publishedBefore);
+  }
+  if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
+    query = query.gte('publishDate', req.query.publishedAfter);
+  }
+  try {
+    const products = await query.exec();
+    res.render('products/results', {
+      products: products,
+      searchOptions: req.query
+    })
+  } catch {
+    res.redirect('/');
+  }
+});
+
+
+
 
 // New Product Route
 router.get('/new', async (req, res) => {

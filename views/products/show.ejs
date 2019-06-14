@@ -2,9 +2,16 @@
 <div class="product-details">
   <div>
     <img class="product-cover" src="<%= product.productImagePath %>">
-    <div class="product-details-btn-grid">
+    <% if(login && _user.admin === true){ %>
+    <div class="product-details-btn-grid">      
       <a class="btn btn-primary" href="/products/<%= product.id %>/edit">Edit</a>
       <%- include('../partials/deleteForm', { url: `/products/${product.id}` }) %>
+    </div>
+    <% } %>
+    <div>
+      <a href="/add-to-cart/<%=product._id%>" class="btn btn-success float-right" role="button">Add
+                        to
+                        Cart</a>
     </div>
   </div>
   <div class="product-details-grid">
@@ -12,9 +19,9 @@
     <div><%= product.description %></div>
     <div class="product-details-label">Price:</div>
     <div><%= product.price %></div>
-    <div class="book-details-label">Quantity</div>
+    <div class="product-details-label">Quantity</div>
     <div><%= product.quantity %></div>
-    <div class="book-details-label">Product Number:</div>
+    <div class="product-details-label">Product Number:</div>
     <div><%= product.productNumber %></div>
   </div>
 </div>
